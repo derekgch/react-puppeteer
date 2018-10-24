@@ -1,6 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+
 
 
 
@@ -18,7 +16,7 @@ const person = {
 describe('H1 Text', () => {
   test('h1 loads correctly', async () => {
 	let browser = await puppeteer.launch({
-	  headless: false
+	  headless: true
 	});
 	let page = await browser.newPage();
 
@@ -31,9 +29,9 @@ describe('H1 Text', () => {
 	});
 
 	await page.goto('http://localhost:3000/');
-	await page.waitForSelector('.App-title');
+	await page.waitForSelector('.App');
 
-	const html = await page.$eval('.App-title', e => e.innerHTML);
+	const html = await page.$eval('h1', e => e.innerHTML);
 	expect(html).toBe('Welcome to React');
 
 	browser.close();
