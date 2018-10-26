@@ -65,9 +65,9 @@ describe('Contact Form', () => {
 	await page.type("textarea[name=message]", person.message);
 	await page.click("input[type=checkbox]");
 
-	await page.click("input[name=question]");
-  const html = await page.$eval('input[name=fullname]', e => e.innerHTML);
-	expect(html).toBe(person.name);
+
+  const info = await page.$eval('input[name=fullname]', e => e.value);
+	expect(info).toBe(person.name);
 
 	browser.close();
   }, 9000000);
